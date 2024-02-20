@@ -14,7 +14,7 @@ def get_data(data_id, name):
     # get data
     data = fred.get_series(data_id).to_dict()
     # write to file
-    with open(f'{name}.csv', 'w') as f:
+    with open(f'data/{name}.csv', 'w') as f:
         f.write('date,value\n')
         for k, v in data.items():
             date_val = str(k).split(" ")[0]

@@ -1,5 +1,6 @@
 import pandas as pd
 from datetime import datetime
+import matplotlib
 
 # read data
 recession_data = pd.read_csv('data/recession_data.csv')
@@ -33,10 +34,13 @@ def question_one_b():
     gdp_data['gdp'] = gdp_data['gdp'].pct_change()
     # annualize results
     gdp_data['gdp'] = (1 + gdp_data['gdp'])**4 - 1
-    # plot and save to file
-    gdp_data.plot(x='date', y='gdp').get_figure().savefig('gdp_growth.png')
+    # plot and save to file, and grid lines to the plot
+    gdp_data.plot(x='date', y='gdp').get_figure().savefig('gdp.png')
+    # add grid lines
+    matplotlib.pyplot.grid(True)
 
-# question_one_b()
+
+question_one_b()
     
 question_two = """
 (a) Make a figure of the inflation rate from 1959Q1 to 2023Q4.
@@ -48,7 +52,7 @@ between the average inflation rates?
 # 2a
 def question_two_a():
     # read data
-    price_deflator = pd.read_csv('price_deflator.csv')
+    price_deflator = pd.read_csv('data/price_deflator.csv')
     # create a series of year over year inflation
     inflation_series = {}
     for i in range(4, len(price_deflator)):
@@ -60,13 +64,13 @@ def question_two_a():
         inflation_series[year] = inflation
     # plot and save to file
     inflation_series = pd.Series(inflation_series)
-    inflation_series.plot().get_figure().savefig('inflation.png')
+    inflation_series.plot().get_figure().savefig('answers/inflation.png')
 
 # question_two_a()
     
 def question_two_b():
     # read data
-    price_deflator = pd.read_csv('price_deflator.csv')
+    price_deflator = pd.read_csv('data/price_deflator.csv')
     # create a series of year over year inflation
     inflation_series = {}
     for i in range(4, len(price_deflator)):
@@ -82,7 +86,7 @@ def question_two_b():
     avg_inflation['1983-2020'] = (inflation_series['2020'] - inflation_series['1983']) / (2020 - 1983)
     avg_inflation['2020-2023'] = (inflation_series['2023'] - inflation_series['2020']) / (2023 - 2020)
     # write to file
-    with open("question_two.txt", "w") as f:
+    with open("answers/question_two.txt", "w") as f:
         f.write(f"The average inflation rate from 1960Q1 to 1982Q4 was {avg_inflation['1960-1982']}\n")
         f.write(f"The average inflation rate from 1983Q1 to 2020Q1 was {avg_inflation['1983-2020']}\n")
         f.write(f"The average inflation rate from 2020Q2 to 2023Q4 was {avg_inflation['2020-2023']}\n")
@@ -106,7 +110,7 @@ def question_three_a():
     u6_unemployment['date'] = pd.to_datetime(u6_unemployment['date'])
     ax = headline_unemployment.plot(x='date', y='value', label='headline')
     u6_unemployment.plot(x='date', y='value', ax=ax, label='u6')
-    ax.get_figure().savefig('unemployment.png')
+    ax.get_figure().savefig('answers/unemployment.png')
 
 # question_three()
     
@@ -117,7 +121,7 @@ def question_three_b():
     u6_unemployment['date'] = pd.to_datetime(u6_unemployment['date'])
     headline_unemployment['date'] = pd.to_datetime(headline_unemployment['date'])    
     # get the maximum unemployment rate in each recession
-    with open("question_three.txt", "w") as f:
+    with open("answers/question_three.txt", "w") as f:
         for i in range(len(recession_data)):
             # get start and end dates
             start = recession_data.iloc[i]['peak']
@@ -143,4 +147,4 @@ def question_three_b():
                 continue
             f.write(f"Max headline unemployment {max_headline_year} {max_headline} and max u6 unemployment rate of {max_u6_year} {max_u6}\n")
 
-question_three_b()
+# question_three_b()
