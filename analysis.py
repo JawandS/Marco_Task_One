@@ -37,13 +37,15 @@ def question_one_b():
     gdp_data['gdp'] = gdp_data['gdp'].pct_change()
     # annualize results
     gdp_data['gdp'] = (1 + gdp_data['gdp'])**4 - 1
-    # plot and save to file, and grid lines to the plot
-    gdp_data.plot(x='date', y='gdp').get_figure().savefig('gdp.png')
-    # add grid lines
-    matplotlib.pyplot.grid(True)
+    # plot using matplotlib
+    gdp_data['date'] = pd.to_datetime(gdp_data['date'])
+    ax = gdp_data.plot(x='date', y='gdp')
+    # add grid to plot
+    ax.grid()
+    # save to file
+    ax.get_figure().savefig('answers/gdp_growth.png')
 
-
-# question_one_b()
+question_one_b()
     
 question_two = """
 (a) Make a figure of the inflation rate from 1959Q1 to 2023Q4.
