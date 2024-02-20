@@ -16,7 +16,7 @@ duration and magnitude, which two recessions were the most severe? Why
 # note: recessions start at the peak of a business cycle and end at the trough
 # go through each peak
 def question_one_a():
-    with open("question_one.txt", "w") as f:
+    with open("answers/question_one.txt", "w") as f:
         # iterate through recession data
         for i in range(len(recession_data)):
             # get start and end dates
@@ -25,8 +25,11 @@ def question_one_a():
             # convert to datetime
             start = datetime.strptime(start, '%Y-%m-%d')
             end = datetime.strptime(end, '%Y-%m-%d')
+            length_in_months = (end.year - start.year) * 12 + end.month - start.month
             # write to file
-            f.write(f"Recession {i+1} started on {start} and ended on {end}. It lasted for {end-start} months.\n")
+            f.write(f"Recession {i+1} started on {start} and ended on {end}. It lasted for {length_in_months} months.\n")
+
+# question_one_a()
 
 # 1b
 def question_one_b():
@@ -40,7 +43,7 @@ def question_one_b():
     matplotlib.pyplot.grid(True)
 
 
-question_one_b()
+# question_one_b()
     
 question_two = """
 (a) Make a figure of the inflation rate from 1959Q1 to 2023Q4.
