@@ -1,6 +1,5 @@
 import pandas as pd
 from datetime import datetime
-import matplotlib
 
 # read data
 recession_data = pd.read_csv('data/recession_data.csv')
@@ -75,7 +74,7 @@ def question_two_a():
     # save to file
     ax.get_figure().savefig('answers/inflation.png')
 
-question_two_a()
+# question_two_a()
     
 def question_two_b():
     # read data
@@ -119,9 +118,12 @@ def question_three_a():
     u6_unemployment['date'] = pd.to_datetime(u6_unemployment['date'])
     ax = headline_unemployment.plot(x='date', y='value', label='headline')
     u6_unemployment.plot(x='date', y='value', ax=ax, label='u6')
+    # add grid
+    ax.grid()
+    # save to file
     ax.get_figure().savefig('answers/unemployment.png')
 
-# question_three()
+# question_three_a()
     
 def question_three_b():
     # read data
