@@ -1,0 +1,9 @@
+Recession 1 started on 1960-04-01 00:00:00 and ended on 1961-02-01 00:00:00. It lasted for 306 days, 0:00:00 months.
+Recession 2 started on 1969-12-01 00:00:00 and ended on 1970-11-01 00:00:00. It lasted for 335 days, 0:00:00 months.
+Recession 3 started on 1973-11-01 00:00:00 and ended on 1975-03-01 00:00:00. It lasted for 485 days, 0:00:00 months.
+Recession 4 started on 1980-01-01 00:00:00 and ended on 1980-07-01 00:00:00. It lasted for 182 days, 0:00:00 months.
+Recession 5 started on 1981-07-01 00:00:00 and ended on 1982-11-01 00:00:00. It lasted for 488 days, 0:00:00 months.
+Recession 6 started on 1990-07-01 00:00:00 and ended on 1991-03-01 00:00:00. It lasted for 243 days, 0:00:00 months.
+Recession 7 started on 2001-03-01 00:00:00 and ended on 2001-11-01 00:00:00. It lasted for 245 days, 0:00:00 months.
+Recession 8 started on 2007-12-01 00:00:00 and ended on 2009-06-01 00:00:00. It lasted for 548 days, 0:00:00 months.
+Recession 9 started on 2020-02-01 00:00:00 and ended on 2020-04-01 00:00:00. It lasted for 60 days, 0:00:00 months.

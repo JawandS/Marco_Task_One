@@ -1,0 +1,3 @@
+Max headline unemployment 2001 5.5 and max u6 unemployment rate of 2001 9.4
+Max headline unemployment 2009 9.5 and max u6 unemployment rate of 2009 16.5
+Max headline unemployment 2020 14.8 and max u6 unemployment rate of 2020 22.9
