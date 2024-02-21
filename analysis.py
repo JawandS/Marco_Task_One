@@ -36,6 +36,8 @@ def question_one_b():
     gdp_data['gdp'] = gdp_data['gdp'].pct_change()
     # annualize results
     gdp_data['gdp'] = (1 + gdp_data['gdp'])**4 - 1
+    # Write the annualized GDP growth rate to a file
+    gdp_data.to_csv('data/gdp_growth_annualized.csv')
     # plot using matplotlib
     gdp_data['date'] = pd.to_datetime(gdp_data['date'])
     ax = gdp_data.plot(x='date', y='gdp')
