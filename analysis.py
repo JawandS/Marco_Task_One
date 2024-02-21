@@ -40,11 +40,17 @@ def question_one_b():
     gdp_data['gdp'] = ((1 + gdp_data['gdp'])**4) - 1
     # Write the annualized GDP growth rate to a file
     gdp_data.to_csv('data/gdp_growth_annualized.csv')
+    # scale by 100
+    gdp_data['gdp'] = gdp_data['gdp'] * 100
     # plot using matplotlib
     gdp_data['date'] = pd.to_datetime(gdp_data['date'])
     ax = gdp_data.plot(x='date', y='gdp')
     # add grid to plot
     ax.grid()
+    # add title and labels
+    ax.set_title('Annualized GDP Growth Rate Over Time')
+    ax.set_xlabel('Date')
+    ax.set_ylabel('GDP Growth Rate (%)')
     # save to file
     ax.get_figure().savefig('answers/gdp_growth.png')
 
@@ -81,6 +87,10 @@ def question_two_a():
     ax = inflation_series.plot()
     # add grid
     ax.grid()
+    # add title and labels
+    ax.set_title('Inflation Rate Over Time')
+    ax.set_xlabel('Date')
+    ax.set_ylabel('Inflation Rate (%)')
     # save to file
     ax.get_figure().savefig('answers/inflation.png')
 
@@ -122,6 +132,10 @@ def question_three_a():
     u6_unemployment.plot(x='date', y='value', ax=ax, label='u6')
     # add grid
     ax.grid()
+    # add title and labels
+    ax.set_title('Unemployment Rates Over Time')
+    ax.set_xlabel('Date')
+    ax.set_ylabel('Unemployment Rate (%)')
     # save to file
     ax.get_figure().savefig('answers/unemployment.png')
 
