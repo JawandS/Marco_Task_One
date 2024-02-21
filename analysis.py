@@ -67,11 +67,13 @@ def question_two_a():
         # get the year
         year = price_deflator.at[i, 'date'].split("-")[0]
         # get the inflation
-        inflation = (float(price_deflator.at[i, 'value']) / float(price_deflator.at[i-4, 'value'])) - 1
+        inflation = 100 * ((float(price_deflator.at[i, 'value']) / float(price_deflator.at[i - 4, 'value'])) - 1)
         # add to series
         inflation_series[year] = inflation
     # convert to series
     inflation_series = pd.Series(inflation_series)
+    # set x axis to be the year
+    inflation_series.index = pd.to_datetime(inflation_series.index)
     # save to file
     inflation_series.to_csv('data/inflation.csv')
     # plot
@@ -93,7 +95,7 @@ def question_two_b():
         # get the year
         year = price_deflator.at[i, 'date'].split("-")[0]
         # get the inflation
-        inflation = 100 * ((float(price_deflator.at[i, 'value']) / float(price_deflator.at[i-4, 'value'])) - 1)
+        inflation = 100 * ((float(price_deflator.at[i, 'value']) / float(price_deflator.at[i - 5, 'value'])) - 1)
         # add to series
         inflation_series[year] = inflation
     # calculate average inflation rates
@@ -116,7 +118,7 @@ def question_two_b():
         f.write(f"The average inflation rate from 1983Q1 to 2020Q1 was {avg_inflation['1983-2020']}\n")
         f.write(f"The average inflation rate from 2020Q2 to 2023Q4 was {avg_inflation['2020-2023']}\n")
 
-question_two_b()
+# question_two_b()
         
 question_three = """
 (a) Make a figure with both unemployment rates on the same graph (hint: include a legend
