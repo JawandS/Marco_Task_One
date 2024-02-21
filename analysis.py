@@ -34,8 +34,10 @@ def question_one_a():
 def question_one_b():
     # go through each quarter's GDP and calculate percent change
     gdp_data['gdp'] = gdp_data['gdp'].pct_change()
+    # write percent change to file
+    gdp_data.to_csv('data/gdp_data_percent.csv')
     # annualize results
-    gdp_data['gdp'] = (1 + gdp_data['gdp'])**4 - 1
+    gdp_data['gdp'] = ((1 + gdp_data['gdp'])**4) - 1
     # Write the annualized GDP growth rate to a file
     gdp_data.to_csv('data/gdp_growth_annualized.csv')
     # plot using matplotlib
@@ -46,7 +48,7 @@ def question_one_b():
     # save to file
     ax.get_figure().savefig('answers/gdp_growth.png')
 
-# question_one_b()
+question_one_b()
     
 question_two = """
 (a) Make a figure of the inflation rate from 1959Q1 to 2023Q4.
