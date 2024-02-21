@@ -67,7 +67,7 @@ def question_two_a():
         # get the year
         year = price_deflator.at[i, 'date'].split("-")[0]
         # get the inflation
-        inflation = 100 * ((float(price_deflator.at[i, 'value']) / float(price_deflator.at[i-4, 'value'])) - 1)
+        inflation = (float(price_deflator.at[i, 'value']) / float(price_deflator.at[i-4, 'value'])) - 1
         # add to series
         inflation_series[year] = inflation
     # convert to series
@@ -82,7 +82,7 @@ def question_two_a():
     # save to file
     ax.get_figure().savefig('answers/inflation.png')
 
-# question_two_a()
+question_two_a()
     
 def question_two_b():
     # read data
