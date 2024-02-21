@@ -61,7 +61,7 @@ def question_two_a():
     price_deflator = pd.read_csv('data/price_deflator.csv')
     # create a series of year over year inflation
     inflation_series = {}
-    for i in range(4, len(price_deflator)):
+    for i in range(4, len(price_deflator), 4):
         # get the year
         year = price_deflator.at[i, 'date'].split("-")[0]
         # get the inflation
@@ -83,7 +83,7 @@ def question_two_b():
     price_deflator = pd.read_csv('data/price_deflator.csv')
     # create a series of year over year inflation
     inflation_series = {}
-    for i in range(4, len(price_deflator)):
+    for i in range(4, len(price_deflator), 4):
         # get the year
         year = price_deflator.at[i, 'date'].split("-")[0]
         # get the inflation
@@ -92,16 +92,25 @@ def question_two_b():
         inflation_series[year] = inflation
     # calculate average inflation rates
     avg_inflation = {}
-    avg_inflation['1960-1982'] = (inflation_series['1982'] - inflation_series['1960']) / (1982 - 1960)
-    avg_inflation['1983-2020'] = (inflation_series['2020'] - inflation_series['1983']) / (2020 - 1983)
-    avg_inflation['2020-2023'] = (inflation_series['2023'] - inflation_series['2020']) / (2023 - 2020)
+    avg_inflation['1960-1982'] = 0
+    for i in range(1960, 1982):
+        avg_inflation['1960-1982'] += inflation_series[str(i)]
+    avg_inflation['1960-1982'] /= (1982 - 1960)
+    avg_inflation['1983-2020'] = 0
+    for i in range(1983, 2020):
+        avg_inflation['1983-2020'] += inflation_series[str(i)]
+    avg_inflation['1983-2020'] /= (2020 - 1983)
+    avg_inflation['2020-2023'] = 0
+    for i in range(2020, 2023):
+        avg_inflation['2020-2023'] += inflation_series[str(i)]
+    avg_inflation['2020-2023'] /= (2023 - 2020)
     # write to file
     with open("answers/question_two.txt", "w") as f:
         f.write(f"The average inflation rate from 1960Q1 to 1982Q4 was {avg_inflation['1960-1982']}\n")
         f.write(f"The average inflation rate from 1983Q1 to 2020Q1 was {avg_inflation['1983-2020']}\n")
         f.write(f"The average inflation rate from 2020Q2 to 2023Q4 was {avg_inflation['2020-2023']}\n")
 
-# question_two_b()
+question_two_b()
         
 question_three = """
 (a) Make a figure with both unemployment rates on the same graph (hint: include a legend
