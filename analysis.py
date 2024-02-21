@@ -48,7 +48,7 @@ def question_one_b():
     # save to file
     ax.get_figure().savefig('answers/gdp_growth.png')
 
-question_one_b()
+# question_one_b()
     
 question_two = """
 (a) Make a figure of the inflation rate from 1959Q1 to 2023Q4.
@@ -70,7 +70,11 @@ def question_two_a():
         inflation = 100 * ((float(price_deflator.at[i, 'value']) / float(price_deflator.at[i-4, 'value'])) - 1)
         # add to series
         inflation_series[year] = inflation
-    # plot and save to file
+    # convert to series
+    inflation_series = pd.Series(inflation_series)
+    # save to file
+    inflation_series.to_csv('data/inflation.csv')
+    # plot
     inflation_series = pd.Series(inflation_series)
     ax = inflation_series.plot()
     # add grid
